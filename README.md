@@ -19,7 +19,7 @@ var html = dg.theme('toggle', {
     },
 
     // Optional default state for the toggle button. Defaults to 'off'.
-    //_state: node.cw.bookmark ? 'on' : 'off',
+    //_state: example.condition() ? 'on' : 'off',
 
     _off: {
 
