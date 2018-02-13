@@ -14,7 +14,8 @@ var html = dg.theme('toggle', {
     // Optional attributes to attach to each toggle button state/mode. 
     _attributes: {
       'data-bundle': 'article',
-      'data-entity-id': 123
+      'data-entity-id': 123,
+      class: ['fa', 'fa-bookmark']
     },
 
     // Optional default state for the toggle button. Defaults to 'off'.
@@ -27,8 +28,7 @@ var html = dg.theme('toggle', {
        _value: dg.t('Save'),
        _type: 'button',
        _attributes: {
-         title: dg.t('Save to bookmarks'),
-         class: classes
+         title: dg.t('Save to bookmarks')
        }
      },
 
@@ -37,8 +37,7 @@ var html = dg.theme('toggle', {
        _value: dg.t('Saving'),
        _type: 'button',
        _attributes: {
-         title: dg.t('Saving to bookmarks'),
-         class: classes
+         title: dg.t('Saving to bookmarks')
        }
      }
     },
@@ -50,8 +49,7 @@ var html = dg.theme('toggle', {
        _value: dg.t('Saved'),
        _type: 'button',
        _attributes: {
-         title: dg.t('Remove from bookmarks'),
-         class: classes
+         title: dg.t('Remove from bookmarks')
        }
      },
 
@@ -60,8 +58,7 @@ var html = dg.theme('toggle', {
        _value: dg.t('Removing'),
        _type: 'button',
        _attributes: {
-         title: dg.t('Removing from bookmarks'),
-         class: classes
+         title: dg.t('Removing from bookmarks')
        }
      }
     },
