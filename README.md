@@ -21,6 +21,7 @@ var html = dg.theme('toggle', {
     // Optional default state for the toggle button. Defaults to 'off'.
     //_state: example.condition() ? 'on' : 'off',
 
+    // Configuration for the "off" state.
     _off: {
 
      // The "off and waiting to be turned on" button.
@@ -42,6 +43,7 @@ var html = dg.theme('toggle', {
      }
     },
 
+    // Configuration for the "on" state.
     _on: {
 
      // The "on and waiting to be turned off" button.
@@ -63,26 +65,36 @@ var html = dg.theme('toggle', {
      }
     },
 
+    // Handles the toggling of the button state.
     _worker: function(toggle, button) {
+
+      // For example...
+
+      // Abort if the user is anonymous.
+      if (dg.currentUser().isAnonymous()) {
+        dg.toast(dg.t('You must login to save content.'));
+        return false;
+      }
+
       return new Promise(function(ok, err) {
 
-          // The button has been toggled, do stuff...
+          // The button has been toggled, do stuff examples...
 
           var bundle = button.getAttribute('data-bundle');
           var entityId = button.getAttribute('data-entity-id');
 
           if (toggle.turningOn()) {
 
-            // The button is turning on...
+            // The button is turning on, make a REST call to Drupal, then resolve.
+            example.restCallOn().then(ok);
 
           }
           else if (toggle.turningOff()) {
 
-            // The button is turning off...
+            // The button is turning off, make a REST call to Drupal, then resolve.
+            example.restCallOff().then(ok);
 
           }
-
-          ok(); // Resolve.
 
       });
     }
