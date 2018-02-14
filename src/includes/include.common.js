@@ -45,8 +45,16 @@ dg_toggle.onclick = function(toggleElement) {
   // Update the button in the DOM to reflect its new state/mode.
   toggle.refresh();
 
-  // Invoke the worker, then circle back to be done.
+  // Run the worker.
   var workerResponse = toggle.getWorker()(toggle, toggleElement);
-  if (jDrupal.isPromise(workerResponse)) { workerResponse.then(done); }
-  else { done(); }
+
+  // If the worker returned false, the we do not need to proceed. Instead we just switch back to "waiting" and refresh.
+  if (!workerResponse) {
+    toggle.setMode('waiting');
+    toggle.refresh();
+  }
+  else { // The worker responded positively, now circle back to done().
+    if (jDrupal.isPromise(workerResponse)) { workerResponse.then(done); }
+    else { done(); }
+  }
 };
